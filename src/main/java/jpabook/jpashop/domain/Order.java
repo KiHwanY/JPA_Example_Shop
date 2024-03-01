@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 //JPA 연습 실전 예제 시작
+//커밋 연습 시행 합니다.
 @Entity
 @Table(name = "ORDERS")
 public class Order {
