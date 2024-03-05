@@ -3,7 +3,8 @@ package jpabook.jpashop.domain;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-
+// 가급적 단방향으로 하는게 좋다.
+// 실제 개발하다가 필요하면 양방향을 추가하는게 좋다.
 @Entity
 @Table(name = "ORDERS")
 public class Order {
@@ -11,9 +12,11 @@ public class Order {
     @Column(name = "ORDER_ID")
     private Long id;
 
-    @Column(name = "MEMBER_ID")
-    private Long memberId;
+//    @Column(name = "MEMBER_ID")
+//    private Long memberId;
 
+    @ManyToOne
+    @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
     private LocalDateTime orderDate;
@@ -37,13 +40,13 @@ public class Order {
         this.id = id;
     }
 
-    public Long getMemberId() {
-        return memberId;
-    }
-
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
-    }
+//    public Long getMemberId() {
+//        return memberId;
+//    }
+//
+//    public void setMemberId(Long memberId) {
+//        this.memberId = memberId;
+//    }
 
     public LocalDateTime getOrderDate() {
         return orderDate;
@@ -60,4 +63,6 @@ public class Order {
     public void setStatus(OrderStatus status) {
         this.status = status;
     }
+
+
 }
