@@ -3,6 +3,9 @@ package jpabook.jpashop.domain;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 // 가급적 단방향으로 하는게 좋다.
 // 실제 개발하다가 필요하면 양방향을 추가하는게 좋다.
 @Entity
@@ -19,11 +22,19 @@ public class Order {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
+    @OneToMany(mappedBy = "order")
+    private List<OrderItem> orderItems = new ArrayList<>();
+
+
     private LocalDateTime orderDate;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
+    public void addOrderItem(OrderItem orderItem) {
+        orderItems.add(orderItem);
+        orderItem.setOrder(this);
+    }
     public Member getMember() {
         return member;
     }
@@ -63,6 +74,7 @@ public class Order {
     public void setStatus(OrderStatus status) {
         this.status = status;
     }
+
 
 
 }
