@@ -10,7 +10,7 @@ import java.util.List;
 // 실제 개발하다가 필요하면 양방향을 추가하는게 좋다.
 @Entity
 @Table(name = "ORDERS")
-public class Order {
+public class Order extends BaseEntity{
     @Id @GeneratedValue
     @Column(name = "ORDER_ID")
     private Long id;
