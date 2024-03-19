@@ -12,6 +12,7 @@ public abstract class BaseEntity { // 추상 클래스
     private LocalDateTime createdLocalDate;
 
     private String modifiedBy;
+
     private LocalDateTime modifiedLocalDate;
 
     public String getCreatedBy() {
